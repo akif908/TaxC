@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import LandingHeader from '../components/LandingHeader';
 import LandingFooter from '../components/LandingFooter';
 import { useTranslation } from 'react-i18next';
@@ -7,9 +7,41 @@ import { useTranslation } from 'react-i18next';
 const LandingPage = () => {
     const { t } = useTranslation();
     const [openFaq, setOpenFaq] = useState('eligibility');
+    const [liveStats, setLiveStats] = useState({
+        online_users: 5,
+        filing_percentage: 75,
+        total_tax_paid: 0,
+        total_tax_due: 0,
+        total_filers: '12K+'
+    });
+
+    useEffect(() => {
+        const fetchStats = async () => {
+            try {
+                const response = await fetch('http://localhost:5000/api/tax/stats');
+                const data = await response.json();
+                if (data && !data.error) {
+                    setLiveStats({
+                        online_users: data.online_users,
+                        filing_percentage: data.filing_percentage,
+                        total_tax_paid: data.total_tax_paid,
+                        total_tax_due: data.total_tax_due,
+                        total_filers: data.total_filers >= 1000 ? `${(data.total_filers / 1000).toFixed(1)}K+` : data.total_filers
+                    });
+                }
+            } catch (error) {
+                console.error("Failed to fetch live stats:", error);
+            }
+        };
+
+        fetchStats();
+        // Refresh every 30 seconds for "real-time" feel
+        const interval = setInterval(fetchStats, 30000);
+        return () => clearInterval(interval);
+    }, []);
 
     const stats = [
-        { label: t('landing.stats.active_filers'), value: '12K+', detail: t('landing.stats.active_filers_detail') },
+        { label: t('landing.stats.active_filers'), value: liveStats.total_filers, detail: t('landing.stats.active_filers_detail') },
         { label: t('landing.stats.processing'), value: '2m 14s', detail: t('landing.stats.processing_detail') },
         { label: t('landing.stats.success'), value: '99.4%', detail: t('landing.stats.success_detail') },
     ];
@@ -29,9 +61,9 @@ const LandingPage = () => {
     ];
 
     const benefits = [
-        { title: t('landing.benefits.1.title'), detail: t('landing.benefits.1.detail') },
-        { title: t('landing.benefits.2.title'), detail: t('landing.benefits.2.detail') },
-        { title: t('landing.benefits.3.title'), detail: t('landing.benefits.3.detail') },
+        { title: t('landing.benefits.1.title'), detail: t('landing.benefits.1.detail'), icon: '⚡' },
+        { title: t('landing.benefits.2.title'), detail: t('landing.benefits.2.detail'), icon: '💰' },
+        { title: t('landing.benefits.3.title'), detail: t('landing.benefits.3.detail'), icon: '🛡️' },
     ];
 
     const faqs = [
@@ -61,26 +93,40 @@ const LandingPage = () => {
                                 <span>{t('landing.hero.badges.ledger')}</span>
                             </div>
                         </div>
-                        <div className="hero-panel">
+                        <div className="hero-panel glass-panel">
                             <div className="panel-header">
-                                <p>{t('landing.hero.panel.filing_year')}</p>
-                                <strong>{t('landing.hero.panel.due_in')}</strong>
+                                <p>{t('landing.hero.panel.filing_year')} 2024-25</p>
+                                <div className="active-badge">
+                                    <span className="pulse-dot"></span>
+                                    {t('landing.hero.panel.active_users')}: {liveStats.online_users}
+                                </div>
                             </div>
                             <div className="panel-body">
-                                <div>
-                                    <p>{t('landing.hero.panel.est_dues')}</p>
-                                    <h2>৳12,500</h2>
+                                <div className="flex justify-between items-start mb-6 gap-4">
+                                    <div className="flex-1">
+                                        <p className="panel-stat-label">{t('landing.hero.panel.total_tax_paid')}</p>
+                                        <h2 className="panel-stat-value text-emerald-400">৳{liveStats.total_tax_paid.toLocaleString()}</h2>
+                                    </div>
+                                    <div className="flex-1 text-right">
+                                        <p className="panel-stat-label">{t('landing.hero.panel.total_tax_due')}</p>
+                                        <h2 className="panel-stat-value text-slate-300">৳{liveStats.total_tax_due.toLocaleString()}</h2>
+                                    </div>
                                 </div>
-                                <div>
-                                    <p>{t('landing.hero.panel.savings')}</p>
-                                    <h3 className="positive">৳1,500</h3>
+
+                                <div className="progress-section">
+                                    <div className="flex justify-between items-center mb-2">
+                                        <span className="panel-stat-label">{t('landing.hero.panel.documentation', { percent: liveStats.filing_percentage })}</span>
+                                        <span className="text-xs font-bold text-emerald-400">{liveStats.filing_percentage}%</span>
+                                    </div>
+                                    <div className="track">
+                                        <div className="fill" style={{ width: `${liveStats.filing_percentage}%` }} />
+                                    </div>
                                 </div>
-                                <div className="progress">
-                                    <span>{t('landing.hero.panel.documentation')}</span>
-                                    <div className="track"><div className="fill" /></div>
-                                </div>
-                                <Link to="/register">
-                                    <button className="panel-btn">{t('landing.hero.panel.review_submit')}</button>
+
+                                <Link to="/register" className="w-full">
+                                    <button className="btn-premium w-full text-sm py-3 mt-4">
+                                        {t('landing.hero.panel.review_submit')}
+                                    </button>
                                 </Link>
                             </div>
                         </div>
@@ -100,7 +146,7 @@ const LandingPage = () => {
                     <div className="section-heading">
                         <p className="eyebrow">{t('landing.features.eyebrow')}</p>
                         <h2>{t('landing.features.title')}</h2>
-                        
+
                     </div>
                     <div className="feature-grid">
                         {featureCards.map(card => (
@@ -117,14 +163,23 @@ const LandingPage = () => {
                     <div className="benefit-container">
                         <div className="benefit-content">
                             {benefits.map(item => (
-                                <div key={item.title} className="benefit-item">
-                                    <h3>{item.title}</h3>
-                                    <p>{item.detail}</p>
+                                <div key={item.title} className="benefit-item group">
+                                    <div className="benefit-icon-wrapper">
+                                        <span className="benefit-emoji">{item.icon}</span>
+                                    </div>
+                                    <div className="benefit-text">
+                                        <h3>{item.title}</h3>
+                                        <p>{item.detail}</p>
+                                    </div>
                                 </div>
                             ))}
                         </div>
                         <div className="benefit-visual">
-                            {/* Visual element or illustration */}
+                            <img
+                                src="/tax_visual.png"
+                                alt="Tax Filing Illustration"
+                                className="benefit-img animate-in fade-in zoom-in duration-1000"
+                            />
                             <div className="visual-glow" />
                         </div>
                     </div>

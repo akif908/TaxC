@@ -23,7 +23,7 @@ const DeadlinePopup = () => {
     }, []);
 
     const calculateTimeRemaining = () => {
-        const deadline = new Date('2025-12-31T23:59:59');
+        const deadline = new Date('2026-12-31T23:59:59');
         const now = new Date();
         const diffTime = deadline - now;
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
@@ -89,7 +89,7 @@ const DeadlinePopup = () => {
                         </div>
 
                         <p className="text-sm text-gray-500 mt-6 font-medium">
-                            {t('deadline_popup.deadline_date', { date: i18n.language === 'bn' ? '৩১ ডিসেম্বর, ২০২৫' : '31 Dec, 2025' })}
+                            {t('deadline_popup.deadline_date', { date: i18n.language === 'bn' ? '৩১ ডিসেম্বর, ২০২৬' : '31 Dec, 2026' })}
                         </p>
                     </div>
 
