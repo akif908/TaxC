@@ -1,0 +1,8 @@
+This file contains all the English translations needed. Due to the complexity, I'll need to carefully construct this in the actual JSON file.
+
+I need to add:
+- landing.* (header, hero, stats, features, workflow, benefits, faq, cta)  
+- feedback.* (title, subtitle, labels, etc.)
+- tax_guide.* (title, sections, lists, disclaimers)
+- auth.* (login, register forms)
+- deadline_popup.* (title, warning, messages)

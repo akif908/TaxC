@@ -1,0 +1,26 @@
+﻿{
+    "title": "Payments ",
+    "subtitle": "Manage your tax payments and view transaction history.",
+    "make_payment": "Make a Payment",
+    "amount_label": "Amount to Pay",
+    "pay_btn": "Pay Now",
+    "processing": "Processing...",
+    "secure_msg": "Secure payment processing via SSL encryption.",
+    "history_title": "Transaction History",
+    "search_placeholder": "Search ID...",
+    "no_transactions": "No transactions found.",
+    "table": {
+        "id": "Trans
+
+action ID",
+        "date": "Date",
+        "status": "Status",
+        "amount": "Amount",
+        "completed": "Completed"
+    },
+    "messages": {
+        "enter_amount": "Please enter a valid amount",
+        "success": "Payment successful!",
+        "failed": "Payment failed"
+    }
+}

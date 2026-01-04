@@ -1,0 +1,647 @@
+{
+    "sidebar": {
+        "dashboard": "Dashboard",
+        "tax_form": "Tax Form",
+        "payment": "Payment",
+        "account": "Account",
+        "admin_panel": "Admin Panel",
+        "users": "Users",
+        "tax_slabs": "Tax Slabs",
+        "feedback": "Feedback",
+        "logout": "Logout",
+        "profile": "Profile"
+    },
+    "dashboard": {
+        "hello": "Hello",
+        "welcome_message": "Here's what's happening with your taxes today.",
+        "complete_profile": "Complete Profile",
+        "tax_returns": "Tax Returns",
+        "total_paid": "Total Paid",
+        "last_filing": "Last Filing",
+        "recent_filings": "Recent Filings",
+        "new_filing": "New Filing",
+        "file_now": "File Now",
+        "no_returns": "No tax returns filed yet.",
+        "date": "Date",
+        "amount": "Amount",
+        "status": "Status",
+        "annual_income": "Annual Income",
+        "not_set": "Not set",
+        "payment_history": "Payment History",
+        "view_all": "View All",
+        "no_payments": "No payments made yet.",
+        "tax_payment": "Tax Payment"
+    },
+    "account": {
+        "title": "My Account",
+        "subtitle": "Calculators, tax guide, and your documents—all in one place.",
+        "tabs": {
+            "calculators": "Calculators",
+            "guide": "Tax Guide",
+            "documents": "Documents",
+            "feedback": "Feedback"
+        },
+        "calculator": {
+            "select_label": "Select Calculator",
+            "tax_calculator": "Tax Calculator",
+            "loan_emi": "Loan EMI",
+            "fdr": "FDR Calculator",
+            "sanchayapatra": "Sanchayapatra Calculator",
+            "title_2025": "Tax Calculator (2025-2026)",
+            "taxpayer_profile_title": "Taxpayer Profile",
+            "category_label": "Taxpayer Category",
+            "category_general": "General Taxpayer",
+            "category_woman_senior": "Woman / Senior Citizen (65+)",
+            "category_disabled": "Person with Disability",
+            "category_freedom_fighter": "Gazetted Freedom Fighter",
+            "residential_location_label": "Residential Location",
+            "location_dhaka_ctg_nganj": "Dhaka / Ctg / N.Ganj City Corp",
+            "location_other_city": "Other City Corporations",
+            "location_other_areas": "Areas outside City Corporations",
+            "parent_of_disabled_child_label": "Parent of child with disability?",
+            "salary_income_title": "Salary & Income",
+            "basic_salary_label": "Basic Salary",
+            "basic_salary_hint": "Annual Basic Salary",
+            "house_rent_label": "House Rent Allowance",
+            "house_rent_hint": "Annual HRA received",
+            "medical_allowance_label": "Medical Allowance",
+            "conveyance_allowance_label": "Conveyance Allowance",
+            "bonuses_label": "Bonuses",
+            "bonuses_hint": "Festival / Performance",
+            "overtime_label": "Overtime Allowance",
+            "salary_other_income_label": "Other Income",
+            "salary_other_income_hint": "Leave Encashment, Interest, etc.",
+            "investment_rebate_title": "Investment & Rebate",
+            "life_insurance_label": "Life Insurance Premium",
+            "dps_label": "DPS Investment",
+            "dps_hint": "Max 1,20,000 allowable",
+            "sanchayapatra_label": "Sanchayapatra",
+            "sanchayapatra_hint": "Max 5,00,000 allowable",
+            "provident_fund_label": "Provident Fund (Self)",
+            "stocks_label": "Stocks / Mutual Funds",
+            "zakat_label": "Zakat Donation",
+            "zakat_hint": "Govt. Approved Fund",
+            "other_adjustments_title": "Other Adjustments",
+            "net_wealth_label": "Net Wealth (BDT)",
+            "net_wealth_hint": "For Surcharge (>4Cr)",
+            "ait_label": "Advance Income Tax (AIT)",
+            "ait_hint": "Already deducted",
+            "tax_free_limit": "Tax-free limit",
+            "income_sources": "Income Sources",
+            "salary": "Salary & Wages",
+            "business": "Business/Profession",
+            "rental": "Rental Income",
+            "investment": "Interest/Investment",
+            "capital": "Capital Gains",
+            "other": "Other Income",
+            "deductions_label": "Eligible Deductions",
+            "deductions_hint": "Enter allowable deductions you want to subtract before tax.",
+            "investments_label": "Eligible Investments for Rebate",
+            "investments_hint": "Rebate base is capped at {{percent}}% of taxable income or ৳{{cap}}.",
+            "calculate_btn": "Calculate Tax",
+            "calculating": "Calculating...",
+            "gross_income": "Gross Income",
+            "taxable_income": "Taxable Income",
+            "tax_before_rebate": "Tax Before Rebate",
+            "net_tax_payable": "Net Tax Payable",
+            "rebate_applied": "Investment Rebate Applied",
+            "breakdown_title": "Calculation Breakdown",
+            "slab_header": "Slab",
+            "rate_header": "Rate",
+            "taxable_amount_header": "Taxable Amount",
+            "tax_header": "Tax",
+            "nbr_link": "Open NBR Income-tax Paripatra 2025–2026",
+            "surcharge": "Surcharge",
+            "ait_deducted": "AIT Deducted"
+        },
+        "documents": {
+            "title": "Documents",
+            "submissions_title": "Tax Submissions",
+            "payments_title": "Payments & Receipts",
+            "no_submissions": "No submissions",
+            "no_payments": "No payments",
+            "receipt_btn": "Receipt"
+        }
+    },
+    "profile": {
+        "title": "My Profile 👤",
+        "subtitle": "Manage your personal information and tax details.",
+        "edit_title": "Edit Profile",
+        "create_title": "Create Profile",
+        "personal_info": "Personal Information",
+        "full_name": "Full Name",
+        "phone": "Phone Number",
+        "address": "Address",
+        "tax_details": "Tax Details",
+        "nid": "National ID (NID)",
+        "tin": "TIN (Tax ID)",
+        "occupation": "Occupation",
+        "annual_income": "Annual Income",
+        "save_btn": "Save Profile",
+        "update_btn": "Update Profile",
+        "saving": "Saving...",
+        "success_update": "Profile updated successfully!",
+        "success_create": "Profile created successfully!",
+        "enter_name": "Enter your full name",
+        "enter_phone": "Enter phone number",
+        "enter_address": "Enter your full address",
+        "enter_nid": "Enter NID",
+        "enter_tin": "Tax Identification Number (optional)",
+        "enter_occupation": "Your occupation",
+        "enter_income": "Enter annual income"
+    },
+    "common": {
+        "loading": "Loading...",
+        "welcome_back": "Welcome back",
+        "search": "Search",
+        "smart_filing_hub": "Smart Filing Hub"
+    },
+    "landing": {
+        "header": {
+            "title": "TaxC",
+            "subtitle": "Smart Tax Filing Platform",
+            "login": "Login",
+            "about": "About",
+            "features": "Features"
+        },
+        "footer": {
+            "brand_desc": "TaxC is your trusted partner for simple, secure, and accurate tax filing in Bangladesh.",
+            "quick_links": "Quick Links",
+            "features": "Features",
+            "about": "About Us",
+            "login": "Login",
+            "tax_sheet": "Tax Sheet",
+            "support": "Support",
+            "legal": "Legal",
+            "help_center": "Help Center",
+            "contact_nbr": "Contact NBR",
+            "status": "System Status",
+            "copyright": "© 2025 TaxC. All rights reserved.",
+            "privacy": "Privacy Policy",
+            "terms": "Terms of Service",
+            "about_title": "About TaxC",
+            "about_text": "TaxC is your trusted tax filing partner in Bangladesh.",
+            "links_title": "Quick Links",
+            "guide": "Tax Guide",
+            "calculator": "Calculator",
+            "contact_title": "Contact",
+            "email": "support@taxc.com",
+            "phone": "+880 1234-567890"
+        },
+        "hero": {
+            "eyebrow": "MODERN TAX FILING",
+            "title": "File Your Taxes with Confidence",
+            "subtitle": "Smart, simple, and secure tax filing for individuals and businesses in Bangladesh.",
+            "get_started": "Get Started",
+            "have_account": "I Have an Account",
+            "badges": {
+                "iso": "ISO 27001 Certified",
+                "gdpr": "GDPR Compliant",
+                "ledger": "Blockchain Ledger"
+            },
+            "panel": {
+                "filing_year": "Filing for FY",
+                "due_in": "Due in",
+                "active_users": "Users Online",
+                "total_tax_paid": "Total Tax Paid",
+                "total_tax_due": "Total Tax Due",
+                "documentation": "Documentation ({{percent}}%)",
+                "completion": "Completion",
+                "review_submit": "Review & Submit Return"
+            }
+        },
+        "stats": {
+            "active_filers": "Active Filers",
+            "active_filers_detail": "Across Bangladesh",
+            "processing": "Avg. Processing",
+            "processing_detail": "From submission to approval",
+            "success": "Success Rate",
+            "success_detail": "Tax filings approved"
+        },
+        "features": {
+            "eyebrow": "FEATURES",
+            "title": "Everything You Need to File Confident",
+            "cards": {
+                "1": {
+                    "title": "Smart Tax Calculator",
+                    "copy": "Calculate your taxes accurately with our NBR-compliant calculator."
+                },
+                "2": {
+                    "title": "Document Management",
+                    "copy": "Store and organize all your tax documents securely in one place."
+                },
+                "3": {
+                    "title": "AI Tax Assistant",
+                    "copy": "Get instant answers to your tax questions with our AI chatbot."
+                },
+                "4": {
+                    "title": "E-Filing Ready",
+                    "copy": "Submit your returns directly to NBR with our integrated e-filing."
+                }
+            }
+        },
+        "workflow": {
+            "eyebrow": "HOW IT WORKS",
+            "title": "File in 4 Simple Steps",
+            "steps": {
+                "1": {
+                    "title": "Create Profile",
+                    "detail": "Set up your taxpayer profile with basic information."
+                },
+                "2": {
+                    "title": "Enter Income",
+                    "detail": "Add your income sources and deductions."
+                },
+                "3": {
+                    "title": "Calculate Tax",
+                    "detail": "Our system calculates your tax liability instantly."
+                },
+                "4": {
+                    "title": "Submit & Pay",
+                    "detail": "Review, submit your return, and make payment."
+                }
+            }
+        },
+        "benefits": {
+            "1": {
+                "title": "Save Time",
+                "detail": "File your taxes in minutes, not hours."
+            },
+            "2": {
+                "title": "Maximize Savings",
+                "detail": "Get all eligible deductions and rebates."
+            },
+            "3": {
+                "title": "Stay Compliant",
+                "detail": "Always up-to-date with the latest tax laws."
+            },
+            "eyebrow": "WHY CHOOSE TAXC",
+            "title": "Benefits of Using TaxC"
+        },
+        "faq": {
+            "eyebrow": "FAQ",
+            "title": "Frequently Asked Questions",
+            "subtitle": "Have questions? We're here to help.",
+            "contact": "Contact us",
+            "items": {
+                "eligibility": {
+                    "q": "Who can use TaxC?",
+                    "a": "Any individual or business taxpayer in Bangladesh can use TaxC to file their tax returns."
+                },
+                "security": {
+                    "q": "Is my data secure?",
+                    "a": "Yes, we use bank-level encryption and comply with international data protection standards."
+                },
+                "pricing": {
+                    "q": "What does it cost?",
+                    "a": "TaxC is free for individual taxpayers. Business packages start from 5,000/year."
+                },
+                "support": {
+                    "q": "Do you provide support?",
+                    "a": "Yes, our support team is available 24/7 via chat, email, and phone."
+                }
+            }
+        },
+        "cta": {
+            "eyebrow": "GET STARTED TODAY",
+            "title": "Ready to File Your Taxes?",
+            "subtitle": "Join thousands of satisfied users who trust TaxC.",
+            "btn": "Create Free Account",
+            "btn_primary": "Create Free Account",
+            "btn_secondary": "Login"
+        }
+    },
+    "feedback": {
+        "title": "Feedback",
+        "subtitle": "We value your feedback! Let us know how we can improve.",
+        "subject_label": "Subject",
+        "subject_placeholder": "Brief description of your feedback",
+        "message_label": "Your Feedback",
+        "message_placeholder": "Please share your thoughts, suggestions, or issues...",
+        "submit_btn": "Submit Feedback",
+        "submitting": "Submitting...",
+        "fill_all": "Please fill in all fields",
+        "success": "Thank you! Your feedback has been submitted successfully.",
+        "error": "Failed to submit feedback. Please try again."
+    },
+    "calculators": {
+        "sanchayapatra": {
+            "title": "Sanchayapatra Calculator",
+            "subtitle": "Calculate returns from Bangladesh Savings Certificates",
+            "what_is_title": "What is Sanchayapatra?",
+            "what_is_desc": "Sanchayapatra is a savings bond issued by the Bangladesh Govt. It offers higher returns than regular savings accounts and is a safe investment.",
+            "calc_title": "Calculate Your Profit",
+            "scheme_label": "Select Scheme",
+            "amount_label": "Investment Amount (৳)",
+            "calc_btn": "Calculate Returns",
+            "total_interest": "Total Interest",
+            "tax": "Tax (TDS)",
+            "net_return": "Net Return",
+            "maturity_amount": "Maturity Amount",
+            "year": "Year",
+            "principal": "Principal",
+            "interest": "Interest",
+            "balance": "Balance",
+            "types_title": "Types of Sanchayapatra",
+            "features_title": "Key Features & Benefits",
+            "eligibility_title": "Who Can Invest?",
+            "purchase_title": "How to Purchase",
+            "notes_title": "Important Notes",
+            "compare_title": "Sanchayapatra vs FDR"
+        },
+        "fdr": {
+            "title": "Fixed Deposit (FDR) Calculator",
+            "subtitle": "Calculate bank FDR returns after AIT deduction",
+            "what_is_title": "What is FDR?",
+            "what_is_desc": "Fixed Deposit Receipt (FDR) is a savings method where you deposit money for a fixed period and get a guaranteed profit.",
+            "calc_title": "Calculate Your FDR Returns",
+            "principal_label": "Principal (৳)",
+            "rate_label": "Annual Interest Rate (%)",
+            "tenure_label": "Tenure (Years)",
+            "freq_label": "Compounding Frequency",
+            "ait_label": "AIT - Advance Income Tax (%)",
+            "calc_btn": "Calculate Returns",
+            "net_interest": "Net Interest",
+            "net_maturity": "Net Maturity Amount",
+            "details_title": "Calculation Details",
+            "growth_title": "Yearly Growth",
+            "banks_title": "Banks Providing FDR",
+            "features_title": "Features of FDR",
+            "benefits_title": "Why Choose FDR?",
+            "factors_title": "Factors Affecting Returns",
+            "considerations_title": "Key Considerations",
+            "compare_title": "FDR vs Sanchayapatra",
+            "tips_title": "Tips for Max Returns"
+        },
+        "loan": {
+            "title": "Loan EMI Calculator",
+            "principal": "Loan Amount (৳)",
+            "rate": "Annual Interest Rate (%)",
+            "tenure": "Tenure (Months)",
+            "monthly_emi": "Monthly EMI",
+            "total_interest": "Total Interest",
+            "total_payment": "Total Payment"
+        }
+    },
+    "auth": {
+        "login": {
+            "title": "Login to TaxC",
+            "email_label": "Email Address",
+            "email_placeholder": "Enter your email",
+            "password_label": "Password",
+            "password_placeholder": "Enter your password",
+            "login_btn": "Login",
+            "logging_in": "Logging in...",
+            "no_account": "Don't have an account?",
+            "register_link": "Register here",
+            "failed": "Login failed. Please check your credentials."
+        },
+        "register": {
+            "title": "Create Account",
+            "name_label": "Full Name",
+            "name_placeholder": "Enter your full name",
+            "email_label": "Email Address",
+            "email_placeholder": "Enter your email",
+            "password_label": "Password",
+            "password_placeholder": "Create a password",
+            "confirm_password_label": "Confirm Password",
+            "confirm_password_placeholder": "Re-enter your password",
+            "register_btn": "Create Account",
+            "registering": "Creating account...",
+            "have_account": "Already have an account?",
+            "login_link": "Login here",
+            "failed": "Registration failed. Please try again.",
+            "password_mismatch": "Passwords do not match"
+        }
+    },
+    "tax_guide": {
+        "title": "Bangladesh Income Tax Guide 2025-2026",
+        "subtitle": "Your complete guide to understanding income tax regulations, rates, and filing procedures in Bangladesh for the assessment year 2025-26.",
+        "toc_title": "Table of Contents",
+        "disclaimer_title": "Disclaimer",
+        "disclaimer_text": "This guide is for informational purposes only and should not be considered as professional tax advice.",
+        "sections": {
+            "intro": {
+                "title": "Introduction to Income Tax",
+                "content": "Income tax is a direct tax levied by the government on individual and corporate income."
+            },
+            "who_pays": {
+                "title": "Who Needs to Pay Income Tax?",
+                "content": "All citizens and residents of Bangladesh earning above the minimum taxable limit must file income tax returns."
+            },
+            "categories": {
+                "title": "Taxpayer Categories",
+                "content": "Taxpayers are classified into different categories with varying tax-free limits."
+            },
+            "slabs": {
+                "title": "Tax Slabs and Rates",
+                "content": "Bangladesh follows a progressive tax system where tax rates increase with income levels."
+            },
+            "deductions": {
+                "title": "Deductions and Rebates",
+                "content": "Various deductions are available to reduce taxable income, including investment rebates."
+            },
+            "filing": {
+                "title": "Filing Your Return",
+                "content": "Returns must be filed annually by the specified deadline."
+            },
+            "penalties": {
+                "title": "Penalties for Non-Compliance",
+                "content": "Failure to file returns or pay taxes on time may result in penalties."
+            }
+        },
+        "reminder": {
+            "title": "Tax Day Reminder",
+            "text": "The deadline for filing income tax returns for individual taxpayers is November 30, 2025. Please file on time to avoid penalties."
+        },
+        "tax_free_limits": {
+            "title": "Tax-Free Income Limits",
+            "subtitle": "Income up to these limits is tax-free",
+            "category": "Taxpayer Category",
+            "limit": "Tax-Free Limit"
+        },
+        "tax_rates": {
+            "title": "Tax Rates (Individual)",
+            "subtitle": "Progressive tax rates based on income slabs",
+            "range": "Income Range",
+            "rate": "Tax Rate",
+            "note": "Note: The minimum tax payable varies by location (Dhaka/Ctg: ৳5,000, Other City Corp: ৳4,000, Non-City: ৳3,000)."
+        },
+        "min_tax": {
+            "title": "Minimum Tax",
+            "desc": "Even if your calculated tax is zero or less than the minimum amount, you must pay the minimum tax if you fall under certain criteria.",
+            "list": {
+                "1": "Dhaka North, Dhaka South, and Chittagong City Corporation: ৳5,000",
+                "2": "Other City Corporations: ৳4,000",
+                "3": "Areas outside City Corporations: ৳3,000"
+            },
+            "tip": "Tip: If your taxable income is below the tax-free limit, you generally do not need to pay the minimum tax unless specific conditions apply."
+        },
+        "wealth_surcharge": {
+            "title": "Net Wealth Surcharge",
+            "desc": "An additional surcharge is payable based on your net wealth shown in the statement of assets and liabilities.",
+            "list": {
+                "1": "Up to ৳4 Crore: 0%",
+                "2": "৳4 Crore to ৳10 Crore: 10%",
+                "3": "৳10 Crore to ৳20 Crore: 20%",
+                "4": "৳20 Crore to ৳50 Crore: 30%",
+                "5": "Above ৳50 Crore: 35%"
+            }
+        },
+        "env_surcharge": {
+            "title": "Environmental Surcharge",
+            "desc": "Taxpayers owning multiple cars are subject to an environmental surcharge.",
+            "list": {
+                "1": "1st Car: No Surcharge",
+                "2": "2nd Car: ৳25,000 to ৳3,50,000 (based on cc)",
+                "3": "3rd Car & above: Progressive rates apply",
+                "4": "Electric vehicles are exempt from this surcharge.",
+                "5": "Surcharge must be paid at the time of registration or renewal."
+            }
+        },
+        "corporate_tax": {
+            "title": "Corporate Tax Rates",
+            "list": {
+                "1": "Publicly Traded Company: 20% - 22.5%",
+                "2": "Non-Publicly Traded Company: 27.5%",
+                "3": "One Person Company (OPC): 22.5%",
+                "4": "Bank, Insurance, FI (Publicly Traded): 37.5%",
+                "5": "Bank, Insurance, FI (Non-Publicly Traded): 40%"
+            },
+            "note": "Note: Conditional reduced rates apply if transactions are done through banking channels."
+        },
+        "rebate": {
+            "title": "Investment Tax Rebate",
+            "desc": "You can reduce your tax liability by investing in eligible sectors. The rebate is calculated as the lower of:",
+            "calc_list": {
+                "1": "15% of the actual investment",
+                "2": "3% of total taxable income",
+                "3": "৳10,00,000 (Maximum limit)"
+            },
+            "sectors_title": "Eligible Investment Sectors:",
+            "sectors_list": {
+                "1": "Life Insurance Premium",
+                "2": "Deposit Pension Scheme (DPS) - Max ৳1,20,000",
+                "3": "Investment in Sanchayapatra (Savings Certificates)",
+                "4": "Stocks and Shares (Listed Companies)",
+                "5": "Provident Fund Contributions",
+                "6": "Benevolent Fund and Group Insurance"
+            }
+        },
+        "documents": {
+            "title": "Required Documents",
+            "subtitle": "Keep these documents ready for filing",
+            "list": {
+                "1": {
+                    "title": "Personal Documents",
+                    "desc": "NID copy, TIN certificate, previous year's tax return acknowledgement."
+                },
+                "2": {
+                    "title": "Salary Documents",
+                    "desc": "Salary certificate, bank statement showing salary credit, provident fund statement."
+                },
+                "3": {
+                    "title": "Investment Documents",
+                    "desc": "Insurance premium receipts, DPS statement, Sanchayapatra purchase copies, stock broker report."
+                },
+                "4": {
+                    "title": "Asset & Liability Documents",
+                    "desc": "Bank statements, deed of land/flat, vehicle registration, loan statements."
+                }
+            }
+        },
+        "deadlines": {
+            "title": "Important Deadlines",
+            "list": {
+                "1": "Tax Day (Individual): November 30, 2025",
+                "2": "Tax Day (Company): January 15, 2026 (or 7 months after income year end)",
+                "3": "Advance Tax Installment 1: September 15",
+                "4": "Advance Tax Installment 2: December 15"
+            },
+            "warning": "Late filing may result in a penalty of 10% of tax imposed on the last assessed income or ৳1,000, whichever is higher, plus ৳50 per day of default."
+        },
+        "links": {
+            "title": "Helpful Resources",
+            "nbr_paripatra_en": "NBR Income Tax Paripatra (English)",
+            "nbr_paripatra_bn": "NBR Income Tax Paripatra (Bangla)",
+            "paripatra_pdf": "Download Paripatra 2025-26 PDF",
+            "nbr_website": "National Board of Revenue (NBR) Website",
+            "ereturn": "e-Return Portal"
+        },
+        "disclaimer": "Disclaimer: This guide is for general informational purposes only and does not constitute professional legal or tax advice. Tax laws are subject to change. Please consult with a professional tax practitioner or refer to the official NBR publications for your specific tax situation."
+    },
+    "deadline_popup": {
+        "title": "Tax Filing Reminder",
+        "subtitle": "Don't miss the deadline!",
+        "warning": "Tax Return Deadline Approaching!",
+        "message": "Only {{days}} days left to file your income tax return for FY {{year}}.",
+        "days": "Days",
+        "remaining": "Remaining",
+        "deadline_date": "Deadline: {{date}}",
+        "file_now": "File Now",
+        "file_now_btn": "File Now",
+        "remind_later": "Remind Me Later",
+        "dismiss": "Dismiss"
+    },
+    "payment": {
+        "title": "Billing & Payments 💳",
+        "subtitle": "Manage your tax payments and download receipts.",
+        "due_title": "Tax Payment Due",
+        "fy_return": "FY 2025-2026 Return",
+        "total_payable": "Total Payable",
+        "pay_now": "Pay Now",
+        "history_title": "Transaction History",
+        "receipt_id": "Receipt ID",
+        "date": "Date",
+        "method": "Method",
+        "status": "Status",
+        "amount": "Amount",
+        "select_method": "Select Payment Method",
+        "securely_pay": "Securely Pay",
+        "using": "using",
+        "cancel": "Cancel",
+        "confirm_pay": "Confirm & Pay",
+        "processing": "Processing...",
+        "success": "Payment successful!",
+        "failed": "Payment failed. Please try again.",
+        "messages": {
+            "failed": "Payment could not be processed."
+        },
+        "no_pending": "All Payments Settled",
+        "no_pending_desc": "No pending payments for this fiscal year.",
+        "no_history": "No transactions found"
+    },
+    "tax_form": {
+        "title": "File Tax Return 📝",
+        "subtitle": "Calculate your taxes and submit your return in just a few clicks.",
+        "fiscal_year": "FY 2024-25",
+        "official_calc": "NBR Official Calculation Method",
+        "income_details": "Income Details",
+        "annual_income_label": "Total Annual Income",
+        "helper_text": "Enter your total taxable income for the fiscal year.",
+        "calculate_btn": "Calculate Tax",
+        "calc_result": "Calculation Result",
+        "calc_breakdown": "Calculation Breakdown",
+        "total_taxable_income": "Total Taxable Income",
+        "net_tax_payable": "Net Tax Payable",
+        "effective_rate": "Effective Rate",
+        "slab_range": "Slab Range",
+        "rate": "Rate",
+        "tax_amount": "Tax Amount",
+        "total_tax_liability": "Total Tax Liability",
+        "submit_btn": "Submit Return",
+        "disclaimer": "This is an automated calculation based on current tax laws. Please verify with a professional if needed.",
+        "ready_title": "Ready to Calculate?",
+        "ready_desc": "Enter your annual income to see a detailed breakdown of your tax liability and submit your return.",
+        "tax_rules_title": "Tax Slab Rules",
+        "above": "Above",
+        "income_range": "Income Range",
+        "messages": {
+            "enter_income": "Please enter a valid income",
+            "calc_failed": "Calculation failed",
+            "calc_first": "Please calculate tax first",
+            "success": "Tax form submitted successfully! Go to Payments to complete payment.",
+            "submit_failed": "Submission failed"
+        }
+    }
+}
