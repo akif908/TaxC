@@ -47,6 +47,7 @@ def create_app(config_name='development'):
     from routes.admin_routes import admin_bp
     from routes.feedback import feedback_bp
     from routes.document_routes import document_bp
+    from routes.consultant_routes import consultant_bp
     
     app.register_blueprint(auth_bp)
     app.register_blueprint(profile_bp)
@@ -57,6 +58,7 @@ def create_app(config_name='development'):
     app.register_blueprint(admin_bp)
     app.register_blueprint(feedback_bp)
     app.register_blueprint(document_bp)
+    app.register_blueprint(consultant_bp)
     
     # Health check route
     @app.route('/api/health', methods=['GET'])
@@ -96,7 +98,26 @@ def create_app(config_name='development'):
             admin.set_password('admin123')
             db.session.add(admin)
             db.session.commit()
-            print("✓ Default admin user created (admin@tax.com / admin123)")
+        
+        # Create default consultant if none exists
+        consultant_user = User.query.filter_by(email='consultant@tax.com').first()
+        if not consultant_user:
+            from models.consultant import Consultant
+            consultant_user = User(email='consultant@tax.com', role='consultant')
+            consultant_user.set_password('cons123')
+            db.session.add(consultant_user)
+            db.session.commit()
+            
+            # Create consultant profile
+            consultant_profile = Consultant(
+                user_id=consultant_user.id,
+                qualification='Certified Tax Specialist (CTS)',
+                experience='8 years in Corporate Tax Filing',
+                bio='Expert in personal and corporate tax optimization. Helping clients stay compliant and save money since 2016.'
+            )
+            db.session.add(consultant_profile)
+            db.session.commit()
+            print("✓ Default consultant created (consultant@tax.com / cons123)")
     
     return app
 

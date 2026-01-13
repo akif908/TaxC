@@ -11,6 +11,7 @@ def init_db(app):
     from models.feedback import Feedback
     from models.document import Document
     from models.taxpayer_profile import TaxpayerProfile
+    from models.consultant import Consultant, ConsultationRequest, ConsultationMessage
 
     with app.app_context():
         db.create_all()

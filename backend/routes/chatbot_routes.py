@@ -20,12 +20,13 @@ def chat():
             return jsonify({'error': 'Message is required'}), 400
         
         user_message = data['message'].strip()
+        history = data.get('history', [])
         
         if not user_message:
             return jsonify({'error': 'Message cannot be empty'}), 400
         
         # Get response from chatbot service
-        response = chatbot_service.get_response(user_message)
+        response = chatbot_service.get_response(user_message, history)
         
         return jsonify({
             'response': response,

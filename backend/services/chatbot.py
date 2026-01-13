@@ -22,134 +22,107 @@ class ChatbotService:
         self.model = os.getenv('CHATBOT_MODEL', 'xiaomi/mimo-v2-flash:free')
         self.use_api = bool(self.api_key)
     
-    def get_response(self, user_message):
+    def get_response(self, user_message, history=None):
         """
         Get chatbot response for user message
         
         Args:
             user_message: User's question/message
+            history: List of previous messages in the session
             
         Returns:
             str: Chatbot response
         """
         if self.use_api:
-            return self._get_api_response(user_message)
+            return self._get_api_response(user_message, history)
         else:
             return self._get_rule_based_response(user_message)
     
-    def _get_api_response(self, user_message):
+    def _get_api_response(self, user_message, history=None):
         """Get response from OpenRouter API"""
         try:
             # System prompt for tax-related assistance
-            system_prompt = """You are a professional assistant for 'TaxC', a smart tax filing hub in Bangladesh.
+            system_prompt = """You are 'TaxC Assistant', a professional tax assistant for TaxC Bangladesh.
             
 DIRECTIONS:
-1. ALWAYS speak in Bangla (বাংলা).
-2. Use professional, polite, and accurate language and don't use religious greetings.
-3. Keep responses concise and focused ONLY on tax related information (income tax, slabs, payments, forms).
-4. NEVER include technical tokens like <s>, </s>, or internal thinking tags.
-5. NEVER hallucinate personal data or pretend to be the user."""
+1. ALWAYS speak in Bangla (বাংলা). 
+2. Use professional, polite, and helpful language.
+3. Help with income tax, slabs, payments, forms, receipts, and investment (like sanchaypatra).
+4. Be concise but clear.
+5. Address the user directly and maintain context.
+6. If the user uses Romanized Bangla (e.g., 'kemon achen'), respond in proper Bangla script (বাংলা লিপি).
+7. If thanked, acknowledge and offer further help.
+"""
             
             headers = {
                 'Content-Type': 'application/json',
                 'Authorization': f'Bearer {self.api_key}',
-                'HTTP-Referer': 'http://localhost:3000', # Required by OpenRouter
-                'X-Title': 'Tax Payment System' # Optional
+                'HTTP-Referer': 'http://localhost:3000',
+                'X-Title': 'Tax Payment System'
             }
+            
+            # Construct messages with history
+            messages = [{'role': 'system', 'content': system_prompt}]
+            
+            if history and isinstance(history, list):
+                # Only take last 10 for context to avoid token limits
+                for msg in history[-10:]:
+                    role = 'assistant' if msg.get('isBot') else 'user'
+                    messages.append({'role': role, 'content': msg.get('text', '')})
+            
+            # Add current message
+            messages.append({'role': 'user', 'content': user_message})
             
             payload = {
                 'model': self.model,
-                'messages': [
-                    {'role': 'system', 'content': system_prompt},
-                    {'role': 'user', 'content': user_message}
-                ],
-                'max_tokens': 800,
-                'temperature': 0.4 # Lower temperature for more stable, less "creative" answers
+                'messages': messages,
+                'max_tokens': 500,
+                'temperature': 0.5,
+                'top_p': 0.9,
+                'frequency_penalty': 0.3
             }
             
-            response = requests.post(self.api_url, json=payload, headers=headers, timeout=12)
+            response = requests.post(self.api_url, json=payload, headers=headers, timeout=20)
             response.raise_for_status()
             
             data = response.json()
             
             if 'choices' in data and len(data['choices']) > 0:
                 raw_content = data['choices'][0]['message']['content']
-                # Clean up any residual technical tags
-                clean_content = raw_content.replace('<s>', '').replace('</s>', '').strip()
-                return clean_content
+                return raw_content.strip()
             else:
-                return "I'm having trouble understanding that. Could you rephrase?"
+                return "দুঃখিত, আমি বিষয়টি বুঝতে পারছি না। দয়া করে আবার জিজ্ঞাসা করুন।"
                 
         except Exception as e:
             print(f"API Error: {str(e)}")
             return self._get_rule_based_response(user_message)
     
     def _get_rule_based_response(self, user_message):
-        """Fallback rule-based chatbot"""
-        message_lower = user_message.lower()
+        """Fallback rule-based chatbot in Bangla"""
+        msg = user_message.lower()
         
-        # Tax calculation questions
-        if any(word in message_lower for word in ['calculate', 'tax', 'income', 'how much']):
-            return """To calculate your tax:
-1. Go to the Tax Form page
-2. Enter your annual income
-3. Click 'Calculate Tax' to see your tax amount based on current tax slabs
-4. Submit the form to proceed with payment"""
+        # Greetings
+        if any(word in msg for word in ['hello', 'hi', 'hey', 'কেমন', 'হ্যালো', 'সালাম']):
+            return "স্বাগতম! আমি ট্যাক্স-সি অ্যাসিস্ট্যান্ট। আমি আপনাকে ট্যাক্স হিসাব, স্ল্যাব, পেমেন্ট এবং রিসিট সংক্রান্ত বিষয়ে সাহায্য করতে পারি। আপনি কি জানতে চান?"
+
+        # Tax calculation
+        if any(word in msg for word in ['calculate', 'tax', 'income', 'হিসাব', 'ট্যাক্স', 'কত']):
+            return """ট্যাক্স হিসাব করতে:
+১. 'Tax Form' পেজে যান।
+২. আপনার বার্ষিক আয় এবং অন্যান্য তথ্য প্রদান করুন।
+৩. 'Calculate Tax' বাটনে ক্লিক করে আপনার প্রদেয় ট্যাক্স দেখুন।"""
         
-        # Payment questions
-        elif any(word in message_lower for word in ['pay', 'payment', 'transaction']):
-            return """To make a payment:
-1. Submit your tax form first
-2. Go to the Payments page
-3. Select your pending submission
-4. Complete the payment process
-5. Download your receipt after successful payment"""
-        
-        # Profile questions
-        elif any(word in message_lower for word in ['profile', 'update', 'information', 'tin', 'nid']):
-            return """You can manage your profile information:
-1. Go to Profile page
-2. Fill in your personal details (Name, NID, TIN, Address, etc.)
-3. Save your profile
-4. You can update it anytime"""
-        
-        # Tax slabs questions
-        elif any(word in message_lower for word in ['slab', 'rate', 'percentage', 'bracket']):
-            return """Tax slabs determine your tax rate based on income:
-- 0-300,000: 0%
-- 300,000-400,000: 5%
-- 400,000-500,000: 10%
-- 500,000-600,000: 15%
-- 600,000-3,000,000: 20%
-- Above 3,000,000: 25%"""
-        
-        # Receipt questions
-        elif any(word in message_lower for word in ['receipt', 'download', 'pdf', 'proof']):
-            return """After payment, you can download your receipt:
-1. Go to Payment History
-2. Find your completed payment
-3. Click 'Download Receipt'
-4. A PDF receipt will be generated with all payment details"""
-        
-        # Help/greeting
-        elif any(word in message_lower for word in ['hello', 'hi', 'help', 'hey', 'start']):
-            return """Hello! I'm your tax assistant chatbot. I can help you with:
-- Tax calculations
-- Payment process
-- Profile management
-- Tax slabs and rates
-- Downloading receipts
-What would you like to know?"""
-        
-        # Default response
-        else:
-            return """I'm here to help with tax-related questions! You can ask me about:
-- How to calculate taxes
-- Making payments
-- Managing your profile
-- Tax slabs and rates
-- Downloading receipts
-Please feel free to ask any specific question!"""
+        # Sanchaypatra / Savings Certificates
+        if any(word in msg for word in ['sanchay', 'sanchaptra', 'সঞ্চয়', 'সঞ্চয়পত্র']):
+            return "সঞ্চয়পত্রের সুদের ওপর সাধারণত ৫% বা ১০% হারে উৎস কর (TDS) কাটা হয়। এটি আপনার মোট ট্যাক্সের সাথে সমন্বয় করা যায়। বিস্তারিত জানতে একজন ট্যাক্স বিশেষজ্ঞের পরামর্শ নিন।"
+
+        # Default response in Bangla
+        return """দুঃখিত, আমি বিষয়টি বুঝতে পারছি না। আপনি আমাকে নিচের বিষয়গুলো নিয়ে জিজ্ঞাসা করতে পারেন:
+- ট্যাক্স হিসাব করার পদ্ধতি
+- পেমেন্ট কীভাবে করবেন
+- ট্যাক্স স্ল্যাব এবং রেট
+- রিসিট ডাউনলোড করা
+- সঞ্চয়পত্র ও অন্যান্য কর তথ্য"""
 
 # Create singleton instance
 chatbot_service = ChatbotService()

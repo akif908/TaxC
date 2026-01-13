@@ -13,7 +13,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False, index=True)
     password_hash = db.Column(db.String(255), nullable=False)
-    role = db.Column(db.String(20), default='user', nullable=False)  # 'user' or 'admin'
+    role = db.Column(db.String(20), default='user', nullable=False)  # 'user', 'admin', or 'consultant'
     is_active = db.Column(db.Boolean, default=True, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     
@@ -21,6 +21,7 @@ class User(db.Model):
     profile = db.relationship('TaxpayerProfile', backref='user', uselist=False, cascade='all, delete-orphan')
     submissions = db.relationship('TaxSubmission', backref='user', cascade='all, delete-orphan')
     payments = db.relationship('Payment', backref='user', cascade='all, delete-orphan')
+    consultant = db.relationship('Consultant', backref='user', uselist=False, cascade='all, delete-orphan')
     
     def set_password(self, password):
         """Hash password using bcrypt"""

@@ -31,3 +31,19 @@ def admin_required(f):
         
         return f(*args, **kwargs)
     return decorated_function
+
+def consultant_required(f):
+    """
+    Decorator to require consultant role
+    Checks both login and consultant role
+    """
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'user_id' not in session:
+            return jsonify({'error': 'Authentication required'}), 401
+        
+        if session.get('role') != 'consultant':
+            return jsonify({'error': 'Consultant privileges required'}), 403
+        
+        return f(*args, **kwargs)
+    return decorated_function

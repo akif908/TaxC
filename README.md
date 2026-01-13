@@ -18,8 +18,6 @@ cd frontend
 npm run dev
 ```
 
-## 🔐 Default Login
-- **Admin**: admin@tax.com / admin123
 
 ## 📚 Features (All 10 Implemented in Backend)
 
@@ -58,9 +56,3 @@ curl http://localhost:5000/api/tax/slabs
 - **backend/** - Complete Flask API with all 10 features ✅
 - **frontend/** - React app (services ready, pages pending)
 
-## 🎯 Next Steps
-
-1. Implement React pages (Login, Dashboard, Profile, etc.)
-2. Connect frontend to backend APIs
-3. Test end-to-end flows
-4. Add your AI chatbot API key to `.env`
