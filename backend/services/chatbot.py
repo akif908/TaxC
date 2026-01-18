@@ -18,8 +18,8 @@ class ChatbotService:
         self.api_url = os.getenv('CHATBOT_API_URL', 'https://openrouter.ai/api/v1/chat/completions')
         # API Key from environment variable
         self.api_key = os.getenv('CHATBOT_API_KEY')
-        # Default model for OpenRouter (using a free tier model)
-        self.model = os.getenv('CHATBOT_MODEL', 'xiaomi/mimo-v2-flash:free')
+        # Default model for OpenRouter (Google Gemini is better for long responses)
+        self.model = os.getenv('CHATBOT_MODEL', 'google/gemini-2.0-flash-exp:free')
         self.use_api = bool(self.api_key)
     
     def get_response(self, user_message, history=None):
@@ -48,10 +48,23 @@ DIRECTIONS:
 1. ALWAYS speak in Bangla (বাংলা). 
 2. Use professional, polite, and helpful language.
 3. Help with income tax, slabs, payments, forms, receipts, and investment (like sanchaypatra).
-4. Be concise but clear.
-5. Address the user directly and maintain context.
-6. If the user uses Romanized Bangla (e.g., 'kemon achen'), respond in proper Bangla script (বাংলা লিপি).
-7. If thanked, acknowledge and offer further help.
+4. For Assessment Year 2025-26, use these rules:
+   - Tax-free Income Limit: 3,50,000 BDT (General), 4,00,000 BDT (Women/Seniors 65+).
+   - Tax Slabs:
+     * First 3.5L/4L: 0%
+     * Next 1L: 5%
+     * Next 4L: 10%
+     * Next 5L: 15%
+     * Next 5L: 20%
+     * On remaining: 25%
+   - Minimum Tax: 5,000/4,000 (City Corp), 3,000 (Outside).
+   - Investment Rebate: 15% of Eligible Amount.
+   - Eligible Amount: Minimum of (3% of Total Taxable Income, 15% of actual investment, 1,000,000 BDT).
+5. If asked to calculate, guide the user to provide their income and investment, then calculate based on above rules.
+6. Be concise but clear.
+7. Address the user directly and maintain context.
+8. If the user uses Romanized Bangla (e.g., 'kemon achen'), respond in proper Bangla script (বাংলা লিপি).
+9. If thanked, acknowledge and offer further help.
 """
             
             headers = {
@@ -76,7 +89,7 @@ DIRECTIONS:
             payload = {
                 'model': self.model,
                 'messages': messages,
-                'max_tokens': 500,
+                'max_tokens': 2000,
                 'temperature': 0.5,
                 'top_p': 0.9,
                 'frequency_penalty': 0.3
